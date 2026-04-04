@@ -1,0 +1,702 @@
+/**
+ * UI2 Theme
+ * 
+ * Modern theme customizations and overrides.
+ * This file is loaded last and can override any previous styles.
+ */
+
+/* =========================================================================
+ * GLOBAL BASE STYLES
+ * ========================================================================= */
+body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+}
+
+/* =========================================================================
+ * CARDS
+ * Clean, minimal card design
+ * ========================================================================= */
+.card {
+    background-color: var(--ui2-card-bg);
+    border: 1px solid var(--ui2-gray-200);
+    border-radius: var(--ui2-border-radius-lg);
+    box-shadow: none;
+    transition: all var(--ui2-transition-base);
+}
+
+.card:hover {
+    border-color: var(--ui2-gray-300);
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid var(--ui2-gray-100);
+    padding: var(--ui2-spacing-md) var(--ui2-spacing-lg);
+    font-weight: var(--ui2-font-weight-semibold);
+    font-size: var(--ui2-font-size-sm);
+    color: var(--ui2-gray-700);
+}
+
+.card-body {
+    padding: var(--ui2-spacing-lg);
+}
+
+.card-title {
+    margin-bottom: var(--ui2-spacing-sm);
+    font-weight: var(--ui2-font-weight-semibold);
+    font-size: var(--ui2-font-size-base);
+    color: var(--ui2-gray-900);
+}
+
+.card-footer {
+    background-color: var(--ui2-gray-50);
+    border-top: 1px solid var(--ui2-gray-100);
+    padding: var(--ui2-spacing-md) var(--ui2-spacing-lg);
+}
+
+/* Login/Auth card special styling */
+.login-card,
+.card.shadow-lg {
+    box-shadow: var(--ui2-shadow-lg) !important;
+    border: none;
+}
+
+/* =========================================================================
+ * BUTTONS
+ * Modern button styling with smooth transitions
+ * ========================================================================= */
+.btn {
+    font-family: var(--ui2-font-family);
+    font-weight: var(--ui2-font-weight-medium);
+    font-size: var(--ui2-font-size-sm);
+    border-radius: var(--ui2-border-radius);
+    padding: 0.5rem 1rem;
+    transition: all var(--ui2-transition-fast);
+    border: none;
+}
+
+.btn:focus,
+.btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--ui2-ring-color);
+}
+
+.btn-primary,
+.btn-primary:visited,
+.btn-primary:link {
+    background-color: var(--ui2-primary);
+    color: var(--ui2-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--ui2-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--ui2-shadow-sm);
+}
+
+.btn-primary:active {
+    background-color: var(--ui2-primary-active);
+    transform: translateY(0);
+}
+
+.btn-success,
+.btn-success:visited,
+.btn-success:link {
+    background-color: var(--ui2-success);
+    color: var(--ui2-white);
+}
+
+.btn-success:hover {
+    background-color: var(--ui2-success-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--ui2-shadow-sm);
+}
+
+.btn-danger,
+.btn-danger:visited,
+.btn-danger:link {
+    background-color: var(--ui2-danger);
+    color: var(--ui2-white);
+}
+
+.btn-danger:hover {
+    background-color: var(--ui2-danger-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--ui2-shadow-sm);
+}
+
+.btn-secondary,
+.btn-secondary:visited,
+.btn-secondary:link {
+    background-color: var(--ui2-gray-100);
+    color: var(--ui2-gray-700);
+    border: 1px solid var(--ui2-gray-300);
+}
+
+.btn-secondary:hover {
+    background-color: var(--ui2-gray-200);
+    color: var(--ui2-gray-900);
+}
+
+.btn-outline-primary,
+.btn-outline-primary:visited,
+.btn-outline-primary:link {
+    background-color: transparent;
+    color: var(--ui2-primary);
+    border: 1px solid var(--ui2-primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--ui2-primary);
+    color: var(--ui2-white);
+}
+
+/* Large button */
+.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--ui2-font-size-base);
+    border-radius: var(--ui2-border-radius-lg);
+}
+
+/* Small button */
+.btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: var(--ui2-font-size-xs);
+}
+
+/* =========================================================================
+ * FORM CONTROLS
+ * Modern input styling
+ * ========================================================================= */
+.form-control {
+    font-family: var(--ui2-font-family);
+    font-size: var(--ui2-font-size-sm);
+    border-radius: var(--ui2-border-radius);
+    border: 1px solid var(--ui2-gray-300);
+    padding: 0.625rem 0.875rem;
+    transition: all var(--ui2-transition-fast);
+    background-color: var(--ui2-white);
+}
+
+.form-control:hover {
+    border-color: var(--ui2-gray-400);
+}
+
+.form-control:focus {
+    border-color: var(--ui2-primary);
+    box-shadow: 0 0 0 3px var(--ui2-ring-color);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--ui2-gray-400);
+}
+
+/* Floating labels */
+.form-floating > .form-control {
+    padding: 1rem 0.875rem;
+    height: calc(3.5rem + 2px);
+}
+
+.form-floating > label {
+    padding: 1rem 0.875rem;
+    color: var(--ui2-gray-500);
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--ui2-primary);
+    transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
+/* Form labels */
+.form-label {
+    font-size: var(--ui2-font-size-sm);
+    font-weight: var(--ui2-font-weight-medium);
+    color: var(--ui2-gray-700);
+    margin-bottom: var(--ui2-spacing-xs);
+}
+
+/* Invalid state */
+.form-control.is-invalid {
+    border-color: var(--ui2-danger);
+}
+
+.form-control.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(var(--ui2-danger-rgb), 0.25);
+}
+
+.invalid-feedback {
+    font-size: var(--ui2-font-size-xs);
+    color: var(--ui2-danger);
+}
+
+/* =========================================================================
+ * ALERTS
+ * Modern alert styling
+ * ========================================================================= */
+.alert {
+    border-radius: var(--ui2-border-radius);
+    border: none;
+    padding: var(--ui2-spacing-md);
+    font-size: var(--ui2-font-size-sm);
+}
+
+.alert-danger {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border-left: 4px solid var(--ui2-danger);
+}
+
+.alert-success {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border-left: 4px solid var(--ui2-success);
+}
+
+.alert-warning {
+    background-color: #fffbeb;
+    color: #92400e;
+    border-left: 4px solid var(--ui2-warning);
+}
+
+.alert-info {
+    background-color: #ecfeff;
+    color: #0e7490;
+    border-left: 4px solid var(--ui2-info);
+}
+
+/* =========================================================================
+ * DROPDOWNS
+ * Modern dropdown styling
+ * ========================================================================= */
+.dropdown-menu {
+    border: 1px solid var(--ui2-gray-200);
+    border-radius: var(--ui2-border-radius-lg);
+    box-shadow: var(--ui2-shadow-lg);
+    padding: var(--ui2-spacing-sm);
+}
+
+.dropdown-item,
+.dropdown-item:visited,
+.dropdown-item:link {
+    padding: 0.5rem 0.875rem;
+    font-size: var(--ui2-font-size-sm);
+    border-radius: var(--ui2-border-radius-sm);
+    color: var(--ui2-gray-700);
+    transition: all var(--ui2-transition-fast);
+}
+
+.dropdown-item:hover {
+    background-color: var(--ui2-gray-100);
+    color: var(--ui2-gray-900);
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: var(--ui2-primary-light);
+    color: var(--ui2-primary);
+}
+
+.dropdown-divider {
+    margin: var(--ui2-spacing-sm) 0;
+    border-color: var(--ui2-gray-200);
+}
+
+/* =========================================================================
+ * TOPBAR DROPDOWNS
+ * ========================================================================= */
+.sb-topnav .dropdown-menu {
+    margin-top: var(--ui2-spacing-sm);
+}
+
+.sb-topnav .nav-link,
+.sb-topnav .nav-link:visited,
+.sb-topnav .nav-link:link {
+    color: var(--ui2-topbar-color);
+    padding: var(--ui2-spacing-sm) var(--ui2-spacing-md);
+    border-radius: var(--ui2-border-radius);
+    transition: all var(--ui2-transition-fast);
+}
+
+.sb-topnav .nav-link:hover {
+    color: var(--ui2-topbar-color-hover);
+    background-color: var(--ui2-gray-100);
+}
+
+/* =========================================================================
+ * TABLES
+ * Modern table styling
+ * ========================================================================= */
+.table {
+    font-size: var(--ui2-font-size-sm);
+}
+
+.table > thead {
+    background-color: var(--ui2-gray-50);
+}
+
+.table > thead th {
+    font-weight: var(--ui2-font-weight-semibold);
+    font-size: var(--ui2-font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ui2-gray-600);
+    padding: var(--ui2-spacing-md);
+    border-bottom: 2px solid var(--ui2-gray-200);
+}
+
+.table > tbody td {
+    padding: var(--ui2-spacing-md);
+    vertical-align: middle;
+    border-bottom: 1px solid var(--ui2-gray-100);
+}
+
+.table > tbody tr:hover {
+    background-color: var(--ui2-gray-50);
+}
+
+/* =========================================================================
+ * BADGES
+ * Modern badge styling
+ * ========================================================================= */
+.badge {
+    font-weight: var(--ui2-font-weight-medium);
+    padding: 0.25em 0.6em;
+    border-radius: var(--ui2-border-radius-full);
+    font-size: 0.75em;
+}
+
+/* =========================================================================
+ * LINKS
+ * No visited color change - keep consistent appearance
+ * ========================================================================= */
+a,
+a:visited,
+a:link {
+    color: var(--ui2-primary);
+    text-decoration: none;
+    transition: all var(--ui2-transition-fast);
+}
+
+a:hover {
+    color: var(--ui2-primary-hover);
+}
+
+/* Content links - more styled appearance */
+main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.page-link),
+.mw_ui_inner_space a:not(.btn):not(.nav-link):not(.dropdown-item),
+.card-body a:not(.btn):not(.nav-link):not(.dropdown-item) {
+    color: var(--ui2-primary);
+    font-weight: var(--ui2-font-weight-medium);
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--ui2-primary-rgb), 0.3);
+    text-underline-offset: 2px;
+    transition: all var(--ui2-transition-fast);
+}
+
+main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.page-link):visited,
+main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.page-link):link,
+.mw_ui_inner_space a:not(.btn):not(.nav-link):not(.dropdown-item):visited,
+.mw_ui_inner_space a:not(.btn):not(.nav-link):not(.dropdown-item):link,
+.card-body a:not(.btn):not(.nav-link):not(.dropdown-item):visited,
+.card-body a:not(.btn):not(.nav-link):not(.dropdown-item):link {
+    color: var(--ui2-primary);
+    text-decoration-color: rgba(var(--ui2-primary-rgb), 0.3);
+}
+
+main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.page-link):hover,
+.mw_ui_inner_space a:not(.btn):not(.nav-link):not(.dropdown-item):hover,
+.card-body a:not(.btn):not(.nav-link):not(.dropdown-item):hover {
+    color: var(--ui2-primary-hover);
+    text-decoration-color: var(--ui2-primary-hover);
+}
+
+/* =========================================================================
+ * FOOTER
+ * ========================================================================= */
+footer.py-4 {
+    background-color: transparent !important;
+    border: none;
+}
+
+footer .text-muted {
+    color: var(--ui2-gray-400) !important;
+    font-size: var(--ui2-font-size-xs);
+}
+
+/* =========================================================================
+ * PROGRESS BARS
+ * ========================================================================= */
+.progress {
+    height: 0.5rem;
+    border-radius: var(--ui2-border-radius-full);
+    background-color: var(--ui2-gray-200);
+    overflow: hidden;
+}
+
+.progress-bar {
+    transition: width 1s ease-in-out;
+}
+
+/* =========================================================================
+ * MODAL
+ * ========================================================================= */
+.modal-content {
+    border: none;
+    border-radius: var(--ui2-border-radius-xl);
+    box-shadow: var(--ui2-shadow-xl);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--ui2-gray-200);
+    padding: var(--ui2-spacing-lg);
+}
+
+.modal-body {
+    padding: var(--ui2-spacing-lg);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--ui2-gray-200);
+    padding: var(--ui2-spacing-md) var(--ui2-spacing-lg);
+}
+
+/* =========================================================================
+ * UTILITY CLASSES
+ * ========================================================================= */
+.rounded-lg {
+    border-radius: var(--ui2-border-radius-lg) !important;
+}
+
+.shadow-lg {
+    box-shadow: var(--ui2-shadow-lg) !important;
+}
+
+/* =========================================================================
+ * ANIMATIONS
+ * ========================================================================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn var(--ui2-transition-slow) ease-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* =========================================================================
+ * ACCESSIBILITY
+ * ========================================================================= */
+:focus-visible {
+    outline: 2px solid var(--ui2-primary);
+    outline-offset: 2px;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--ui2-primary);
+    color: var(--ui2-white);
+    padding: var(--ui2-spacing-sm) var(--ui2-spacing-md);
+    border-radius: 0 0 var(--ui2-border-radius) 0;
+    z-index: var(--ui2-z-tooltip);
+    transition: top var(--ui2-transition-fast);
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* =========================================================================
+ * RESPONSIVE
+ * ========================================================================= */
+@media (max-width: 576px) {
+    .card-body {
+        padding: var(--ui2-spacing-md);
+    }
+    
+    .btn-lg {
+        padding: 0.625rem 1.25rem;
+        font-size: var(--ui2-font-size-sm);
+    }
+}
+
+/* =========================================================================
+ * PRINT STYLES
+ * ========================================================================= */
+@media print {
+    .sb-topnav,
+    #layoutSidenav_nav,
+    .no-print {
+        display: none !important;
+    }
+    
+    #layoutSidenav #layoutSidenav_content {
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+}
+
+/* =========================================================================
+ * PAGE HEADER
+ * Modern page title and breadcrumb area
+ * ========================================================================= */
+h1.mt-4,
+.page-header h1 {
+    font-size: 1.75rem;
+    font-weight: var(--ui2-font-weight-bold);
+    color: var(--ui2-gray-900);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--ui2-spacing-xs) !important;
+    margin-top: var(--ui2-spacing-md) !important;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: var(--ui2-font-weight-semibold);
+    color: var(--ui2-gray-800);
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: 1.125rem;
+    font-weight: var(--ui2-font-weight-semibold);
+    color: var(--ui2-gray-800);
+}
+
+h4, h5, h6 {
+    font-weight: var(--ui2-font-weight-semibold);
+    color: var(--ui2-gray-700);
+}
+
+/* =========================================================================
+ * BREADCRUMBS
+ * Clean, modern breadcrumb navigation
+ * ========================================================================= */
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: var(--ui2-spacing-lg);
+    font-size: var(--ui2-font-size-sm);
+}
+
+.breadcrumb-item {
+    color: var(--ui2-gray-500);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--ui2-gray-300);
+    content: "/";
+    padding: 0 0.5rem;
+}
+
+.breadcrumb-item a,
+.breadcrumb-item a:visited,
+.breadcrumb-item a:link {
+    color: var(--ui2-gray-500);
+    text-decoration: none;
+    transition: color var(--ui2-transition-fast);
+}
+
+.breadcrumb-item a:hover {
+    color: var(--ui2-primary);
+}
+
+.breadcrumb-item.active {
+    color: var(--ui2-gray-700);
+}
+
+/* =========================================================================
+ * CUSTOM SCROLLBAR
+ * Modern thin scrollbar for webkit browsers
+ * ========================================================================= */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--ui2-gray-300);
+    border-radius: var(--ui2-border-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ui2-gray-400);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--ui2-gray-300) transparent;
+}
+
+/* =========================================================================
+ * MAIN CONTENT AREA
+ * Smooth transitions and modern spacing
+ * ========================================================================= */
+main.container-fluid {
+    padding: var(--ui2-spacing-lg) var(--ui2-spacing-xl);
+}
+
+/* =========================================================================
+ * SELECTION
+ * Brand-colored text selection
+ * ========================================================================= */
+::selection {
+    background-color: var(--ui2-primary-light);
+    color: var(--ui2-primary);
+}
+
+/* =========================================================================
+ * NAV TITLE (Legacy support)
+ * ========================================================================= */
+.nav_main_ui_title {
+    font-size: var(--ui2-font-size-lg);
+    font-weight: var(--ui2-font-weight-semibold);
+    color: var(--ui2-gray-700);
+}
+
+/* =========================================================================
+ * COLLAPSE BUTTON
+ * ========================================================================= */
+.mw_collaps_btn {
+    color: var(--ui2-gray-600) !important;
+    background: transparent;
+    border: none;
+    border-radius: var(--ui2-border-radius);
+    transition: all var(--ui2-transition-fast);
+}
+
+.mw_collaps_btn:hover {
+    background-color: var(--ui2-gray-100);
+    color: var(--ui2-gray-900) !important;
+}
