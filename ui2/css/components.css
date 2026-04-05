@@ -427,3 +427,18 @@
     text-transform: uppercase;
     color: var(--ui2-gray-600);
 }
+/* Toggle badge links */
+a.badge,
+a.badge:link,
+a.badge:visited,
+a.badge:active {
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff !important;
+  padding: 0.4em 0.8em;
+  transition: opacity 0.2s;
+}
+a.badge:hover {
+  opacity: 0.8;
+  color: #fff !important;
+}
