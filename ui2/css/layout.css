@@ -161,8 +161,8 @@ body {
     height: var(--ui2-topbar-height);
     z-index: var(--ui2-z-topnav);
     background-color: var(--ui2-topbar-bg);
-    border-bottom: 1px solid var(--ui2-gray-200);
-    box-shadow: none;
+    border-bottom: 1px solid var(--ui2-topbar-border);
+    box-shadow: var(--ui2-topbar-shadow);
 }
 
 .sb-topnav .navbar-brand,
@@ -172,7 +172,7 @@ body {
     width: var(--ui2-sidebar-width);
     margin: 0;
     padding-left: var(--ui2-spacing-lg);
-    color: var(--ui2-brand);
+    color: var(--ui2-topbar-brand-color);
     font-weight: var(--ui2-font-weight-bold);
     font-size: 1.125rem;
     letter-spacing: -0.025em;
@@ -182,7 +182,7 @@ body {
 }
 
 .sb-topnav #sidebarToggle {
-    color: var(--ui2-gray-500);
+    color: var(--ui2-topbar-color);
     border: none;
     padding: var(--ui2-spacing-sm) var(--ui2-spacing-md);
     border-radius: var(--ui2-border-radius);
@@ -191,8 +191,8 @@ body {
 }
 
 .sb-topnav #sidebarToggle:hover {
-    color: var(--ui2-gray-900);
-    background-color: var(--ui2-gray-100);
+    color: var(--ui2-topbar-color-hover);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Remove dark/light modifiers - we use variables now */
@@ -227,12 +227,19 @@ body {
 .sb-sidenav .sb-sidenav-menu .nav {
     flex-direction: column;
     flex-wrap: nowrap;
-    gap: 4px;
+    gap: 2px;
+}
+
+/* Sidebar Dividers */
+.sb-sidenav hr.sidebar-divider {
+    margin: 0.25rem 0.5rem;
+    border-color: var(--ui2-sidebar-divider-color);
+    opacity: 1;
 }
 
 /* Sidebar Section Headings */
 .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
-    padding: var(--ui2-spacing-lg) var(--ui2-spacing-sm) var(--ui2-spacing-xs);
+    padding: var(--ui2-spacing-sm) var(--ui2-spacing-sm) var(--ui2-spacing-xs);
     font-size: 0.6875rem;
     font-weight: var(--ui2-font-weight-bold);
     text-transform: uppercase;
@@ -250,7 +257,7 @@ body {
 .sb-sidenav .sb-sidenav-menu .nav .nav-link:link {
     display: flex;
     align-items: center;
-    padding: 0.625rem var(--ui2-spacing-md);
+    padding: 0.4rem var(--ui2-spacing-md);
     position: relative;
     color: var(--ui2-sidebar-color);
     border-radius: var(--ui2-border-radius);
@@ -326,7 +333,7 @@ body {
 }
 
 .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested .nav-link {
-    padding: 0.5rem var(--ui2-spacing-md);
+    padding: 0.3rem var(--ui2-spacing-md);
     font-size: var(--ui2-font-size-xs);
 }
 

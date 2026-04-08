@@ -166,10 +166,10 @@
     
     /* =====================================================================
      * SIDEBAR THEME
-     * Dark sidebar - elegant and professional
+     * Black sidebar - matching topbar
      * ===================================================================== */
-    --ui2-sidebar-bg: #1e293b;
-    --ui2-sidebar-bg-solid: #1e293b;
+    --ui2-sidebar-bg: var(--ui2-black);
+    --ui2-sidebar-bg-solid: var(--ui2-black);
     --ui2-sidebar-color: rgba(255, 255, 255, 0.7);
     --ui2-sidebar-color-hover: rgba(255, 255, 255, 0.95);
     --ui2-sidebar-color-active: var(--ui2-white);
@@ -181,14 +181,14 @@
     
     /* =====================================================================
      * TOPBAR THEME
-     * Clean white topbar with subtle shadow
+     * Dark black topbar
      * ===================================================================== */
-    --ui2-topbar-bg: var(--ui2-white);
-    --ui2-topbar-color: var(--ui2-gray-600);
-    --ui2-topbar-color-hover: var(--ui2-gray-900);
-    --ui2-topbar-brand-color: var(--ui2-gray-900);
-    --ui2-topbar-border: var(--ui2-gray-200);
-    --ui2-topbar-shadow: var(--ui2-shadow-sm);
+    --ui2-topbar-bg: var(--ui2-black);
+    --ui2-topbar-color: var(--ui2-gray-400);
+    --ui2-topbar-color-hover: var(--ui2-white);
+    --ui2-topbar-brand-color: var(--ui2-white);
+    --ui2-topbar-border: transparent;
+    --ui2-topbar-shadow: none;
     
     /* =====================================================================
      * CONTENT AREA
