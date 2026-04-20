@@ -16,6 +16,17 @@ body {
 }
 
 /* =========================================================================
+ * SINGLE MODE LAYOUT - Generic wrapper for full-screen UIs
+ * ========================================================================= */
+.layout-single-mode {
+    display: block;
+}
+
+.layout-single-mode-content {
+    display: block;
+}
+
+/* =========================================================================
  * CARDS
  * Clean, minimal card design
  * ========================================================================= */
@@ -883,6 +894,39 @@ h1.mt-4,
 
 .sb-sidenav-menu {
     scrollbar-color: var(--ui2-sidebar-scrollbar) transparent;
+}
+
+/* =========================================================================
+ * MAIN FOOTER - Page footer branding
+ * ========================================================================= */
+
+footer.py-4 {
+    border-top: 1px solid var(--ui2-border-color);
+    background: var(--ui2-body-bg) !important;
+}
+
+footer .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+footer .footer-brand a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 1;
+}
+
+footer .footer-logo {
+    height: 32px;
+    width: auto;
+    opacity: 0.6;
+    transition: opacity var(--ui2-transition-fast);
+}
+
+footer .footer-brand a:hover .footer-logo {
+    opacity: 0.85;
 }
 
 /* =========================================================================
