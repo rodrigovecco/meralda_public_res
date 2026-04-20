@@ -57,7 +57,256 @@ body {
     padding: var(--ui2-spacing-md) var(--ui2-spacing-lg);
 }
 
-/* Login/Auth card special styling */
+/* =========================================================================
+ * LOGIN & AUTHENTICATION
+ * Modern glassmorphism authentication pages with backdrop blur
+ * Applies to all authentication layouts: login, password reset, register
+ * Migrated from theme (Login Migration)
+ * ========================================================================= */
+
+/* Authentication layout - dark gradient background */
+#layoutAuthentication {
+    background: linear-gradient(135deg, var(--ui2-auth-bg-start) 0%, var(--ui2-auth-bg-end) 100%);
+    font-family: var(--ui2-font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#layoutAuthentication #layoutAuthentication_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* Wrapper for forms without grid system */
+#layoutAuthentication .auth-form-wrapper {
+    max-width: 540px;
+    width: 100%;
+}
+
+@media (min-width: 576px) {
+    #layoutAuthentication .auth-form-wrapper {
+        min-width: 420px;
+    }
+}
+
+/* Glassmorphism card for all auth pages */
+#layoutAuthentication .card {
+    background: var(--ui2-auth-glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--ui2-auth-glass-border);
+    border-radius: var(--ui2-border-radius-xl);
+    box-shadow: var(--ui2-auth-glass-shadow);
+    overflow: hidden;
+}
+
+#layoutAuthentication .card-header {
+    background: var(--ui2-auth-card-header-bg);
+    border-bottom: 1px solid var(--ui2-auth-card-header-border);
+    padding: 1.5rem;
+}
+
+#layoutAuthentication .card-header .card-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--ui2-auth-text);
+    text-align: center;
+    font-family: var(--ui2-font-family);
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+#layoutAuthentication .card-body {
+    padding: 2rem 1.5rem;
+    background: transparent;
+}
+
+/* Form controls with semi-transparent backgrounds */
+#layoutAuthentication .form-control {
+    background: var(--ui2-auth-input-bg) !important;
+    border: 1px solid var(--ui2-auth-input-border);
+    color: var(--ui2-auth-text);
+    font-family: var(--ui2-font-family);
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+}
+
+#layoutAuthentication .form-control:hover {
+    border-color: var(--ui2-auth-input-hover-border);
+    background: var(--ui2-auth-input-hover-bg) !important;
+}
+
+#layoutAuthentication .form-control:focus {
+    border-color: var(--ui2-auth-input-focus-border);
+    background: var(--ui2-auth-input-focus-bg) !important;
+    box-shadow: 0 0 0 3px var(--ui2-auth-input-focus-shadow);
+}
+
+/* Autofill styles - prevent white background override */
+#layoutAuthentication .form-control:-webkit-autofill,
+#layoutAuthentication .form-control:-webkit-autofill:hover,
+#layoutAuthentication .form-control:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--ui2-auth-text);
+    -webkit-box-shadow: 0 0 0 1000px var(--ui2-auth-input-focus-bg) inset;
+    box-shadow: 0 0 0 3px var(--ui2-auth-input-focus-shadow);
+    border-color: var(--ui2-auth-input-focus-border);
+    transition: background-color 5000s ease-in-out 0s;
+    font-family: var(--ui2-font-family);
+}
+
+#layoutAuthentication .form-control::placeholder {
+    color: var(--ui2-auth-placeholder);
+    opacity: 1;
+    font-family: var(--ui2-font-family);
+    font-weight: 400;
+}
+
+/* Floating labels */
+#layoutAuthentication .form-floating > label {
+    color: var(--ui2-auth-label);
+    font-family: var(--ui2-font-family);
+    font-weight: 400;
+    font-size: 0.9375rem;
+}
+
+#layoutAuthentication .form-floating > .form-control:focus ~ label,
+#layoutAuthentication .form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--ui2-auth-label-active);
+    font-weight: 500;
+}
+
+/* Form labels (non-floating) */
+#layoutAuthentication .form-label {
+    color: var(--ui2-auth-label-active);
+    font-family: var(--ui2-font-family);
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Input groups (for captcha, etc) */
+#layoutAuthentication .input-group-text {
+    background: var(--ui2-auth-captcha-bg);
+    border: 1px solid var(--ui2-auth-input-border);
+    color: var(--ui2-auth-input-group-text);
+    transition: all 0.2s ease;
+}
+
+#layoutAuthentication .input-group:focus-within .input-group-text {
+    border-color: var(--ui2-auth-input-focus-border);
+    box-shadow: 0 0 0 3px var(--ui2-auth-input-focus-shadow);
+}
+
+/* Primary button - white on dark */
+#layoutAuthentication .btn-primary {
+    background: var(--ui2-auth-btn-bg);
+    border: none;
+    color: var(--ui2-auth-btn-text);
+    font-family: var(--ui2-font-family);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: 0.02em;
+    padding: 0.75rem 1rem;
+}
+
+#layoutAuthentication .btn-primary:hover {
+    background: var(--ui2-auth-btn-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px -4px var(--ui2-auth-btn-hover-shadow);
+    color: var(--ui2-auth-btn-text);
+}
+
+/* Success button variant */
+#layoutAuthentication .btn-success {
+    background: var(--ui2-auth-btn-bg);
+    border: none;
+    color: var(--ui2-auth-btn-text);
+    font-family: var(--ui2-font-family);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: 0.02em;
+}
+
+#layoutAuthentication .btn-success:hover {
+    background: var(--ui2-auth-btn-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px -4px var(--ui2-auth-btn-hover-shadow);
+    color: var(--ui2-auth-btn-text);
+}
+
+/* Links styling */
+#layoutAuthentication a:not(.btn) {
+    color: var(--ui2-auth-link);
+    text-decoration: none;
+    font-family: var(--ui2-font-family);
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+#layoutAuthentication a:not(.btn):hover {
+    color: var(--ui2-auth-link-hover);
+}
+
+/* Alert messages */
+#layoutAuthentication .alert {
+    background: var(--ui2-auth-alert-bg);
+    border: 1px solid var(--ui2-auth-alert-border);
+    color: var(--ui2-auth-text);
+    font-family: var(--ui2-font-family);
+    font-size: 0.875rem;
+    margin-top: 1.5rem;
+}
+
+#layoutAuthentication .alert-danger {
+    background: var(--ui2-auth-alert-danger-bg);
+    border: 1px solid var(--ui2-auth-alert-danger-border);
+    border-left: 4px solid var(--ui2-danger);
+    color: var(--ui2-auth-alert-danger-text);
+}
+
+#layoutAuthentication .alert-success {
+    background: var(--ui2-auth-alert-success-bg);
+    border: 1px solid var(--ui2-auth-alert-success-border);
+    border-left: 4px solid var(--ui2-success);
+    color: var(--ui2-auth-alert-success-text);
+}
+
+#layoutAuthentication .alert-info {
+    background: var(--ui2-auth-alert-info-bg);
+    border: 1px solid var(--ui2-auth-alert-info-border);
+    border-left: 4px solid var(--ui2-info);
+    color: var(--ui2-auth-alert-info-text);
+}
+
+/* Loading/waiting text */
+#layoutAuthentication .text-muted {
+    color: var(--ui2-auth-text-muted) !important;
+    font-family: var(--ui2-font-family);
+    font-size: 0.875rem;
+}
+
+/* Backward compatibility - specific container support */
+#uie_login-container {
+    background: transparent;
+    min-height: auto;
+    display: block;
+    padding: 0;
+}
+
+#uie_login-wait {
+    color: var(--ui2-auth-text-muted);
+    font-family: var(--ui2-font-family);
+    font-size: 0.875rem;
+}
+
+#uie_login-message {
+    margin-top: 0.75rem;
+}
+
+/* Legacy card styling (kept for compatibility) */
 .login-card,
 .card.shadow-lg {
     box-shadow: var(--ui2-shadow-lg) !important;
@@ -246,26 +495,26 @@ body {
 }
 
 .alert-danger {
-    background-color: #fef2f2;
-    color: #991b1b;
+    background-color: var(--ui2-danger-bg);
+    color: var(--ui2-danger-text-alt);
     border-left: 4px solid var(--ui2-danger);
 }
 
 .alert-success {
-    background-color: #ecfdf5;
-    color: #065f46;
+    background-color: var(--ui2-success-bg-alt);
+    color: var(--ui2-success-text-alt);
     border-left: 4px solid var(--ui2-success);
 }
 
 .alert-warning {
-    background-color: #fffbeb;
-    color: #92400e;
+    background-color: var(--ui2-warning-bg);
+    color: var(--ui2-warning-text-alt);
     border-left: 4px solid var(--ui2-warning);
 }
 
 .alert-info {
-    background-color: #ecfeff;
-    color: #0e7490;
+    background-color: var(--ui2-info-bg-alt);
+    color: var(--ui2-info-text-alt);
     border-left: 4px solid var(--ui2-info);
 }
 
@@ -324,7 +573,7 @@ body {
 
 .sb-topnav .nav-link:hover {
     color: var(--ui2-topbar-color-hover);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--ui2-topbar-hover-bg);
 }
 
 /* =========================================================================
@@ -570,10 +819,124 @@ h1.mt-4,
 .page-header h1 {
     font-size: 1.75rem;
     font-weight: var(--ui2-font-weight-bold);
+}
+
+/* =========================================================================
+ * SIDEBAR - Navigation Enhancements
+ * Active indicator and animations
+ * ========================================================================= */
+
+/* White indicator bar on the left side of the link */
+.sb-sidenav-dark .sb-sidenav-menu .nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.25rem;
+    width: 3px;
+    border-radius: 0 2px 2px 0;
+    background: transparent;
+    transition: background 0.2s;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover::before {
+    background: var(--ui2-sidebar-indicator-hover);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-item.active > .nav-link::before,
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active::before {
+    background: var(--ui2-sidebar-indicator-active);
+}
+
+/* Logout link styling */
+.sb-sidenav-menu a[href*="logout"] {
+    color: var(--ui2-sidebar-logout-color);
+}
+
+.sb-sidenav-menu a[href*="logout"]:hover {
+    color: var(--ui2-sidebar-logout-hover-color);
+    background-color: var(--ui2-sidebar-logout-hover-bg);
+}
+
+/* Sidebar stagger animation */
+.sb-sidenav-menu .nav > a.nav-link:nth-child(1) { animation: fadeIn 0.3s .05s ease both; }
+.sb-sidenav-menu .nav > a.nav-link:nth-child(2) { animation: fadeIn 0.3s .10s ease both; }
+.sb-sidenav-menu .nav > a.nav-link:nth-child(3) { animation: fadeIn 0.3s .15s ease both; }
+.sb-sidenav-menu .nav > a.nav-link:nth-child(4) { animation: fadeIn 0.3s .20s ease both; }
+.sb-sidenav-menu .nav > a.nav-link:nth-child(5) { animation: fadeIn 0.3s .25s ease both; }
+.sb-sidenav-menu .nav > a.nav-link:nth-child(6) { animation: fadeIn 0.3s .30s ease both; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dark sidebar scrollbar */
+.sb-sidenav-menu::-webkit-scrollbar-thumb {
+    background: var(--ui2-sidebar-scrollbar);
+}
+
+.sb-sidenav-menu::-webkit-scrollbar-thumb:hover {
+    background: var(--ui2-sidebar-scrollbar-hover);
+}
+
+.sb-sidenav-menu {
+    scrollbar-color: var(--ui2-sidebar-scrollbar) transparent;
+}
+
+/* =========================================================================
+ * PAGE HEADER - Breadcrumb Inline
+ * Modern inline breadcrumb navigation
+ * ========================================================================= */
+
+.mw-subinterface-header {
+    display: block;
+    padding: 1rem 0 0.75rem;
+    margin: 0;
+    line-height: 1.5;
+    border-bottom: none;
+}
+
+.mw-subinterface-header-route {
+    display: inline;
+    font-size: var(--ui2-font-size-sm);
+    font-weight: 500;
+    color: var(--ui2-gray-400);
+    padding: 0;
+}
+
+.mw-subinterface-header-route::after {
+    content: " › ";
+    color: var(--ui2-gray-300);
+    white-space: pre;
+}
+
+.mw-subinterface-header-route a {
+    color: var(--ui2-gray-400);
+    text-decoration: none;
+}
+
+.mw-subinterface-header-route a:hover {
+    color: var(--ui2-gray-600);
+}
+
+.mw-subinterface-header-titles {
+    display: inline;
+}
+
+.mw-subinterface-header-title {
+    display: inline;
+    font-size: 1.0625rem;
+    font-weight: 600;
     color: var(--ui2-gray-900);
     letter-spacing: -0.02em;
-    margin-bottom: var(--ui2-spacing-xs) !important;
-    margin-top: var(--ui2-spacing-md) !important;
+}
+
+hr.mw-subinterface-header-divider {
+    border-color: var(--ui2-border-color);
+    margin: 0.375rem 0 1rem;
+    opacity: 1;
 }
 
 h2 {

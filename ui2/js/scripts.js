@@ -7,18 +7,16 @@
 // Scripts
 // 
 
+
+// Restore sidebar state immediately (before paint) to avoid flash
+if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+    document.body.classList.add('sb-sidenav-toggled');
+}
+
 $(function(){
-    var keepState=false;//true to keep last menu state
-    if(keepState){
-        if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-            $("body").toggleClass("sb-sidenav-toggled");
-        }
-    }
     $('#sidebarToggle').click(function(){
         $("body").toggleClass("sb-sidenav-toggled");
-        if(keepState){
-            localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-        }
+        localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
     });
 });
 

@@ -192,7 +192,7 @@ body {
 
 .sb-topnav #sidebarToggle:hover {
     color: var(--ui2-topbar-color-hover);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--ui2-topbar-hover-bg);
 }
 
 /* Remove dark/light modifiers - we use variables now */
@@ -435,6 +435,27 @@ main {
     flex-grow: 1;
 }
 
+/* =========================================================================
+ * RESPONSIVE & ACCESSIBILITY
+ * Migrated from theme (FASE 4)
+ * ========================================================================= */
+
+/* Responsive sidebar adjustments */
+@media (max-width: 992px) {
+    .sb-sidenav-menu .nav > a.nav-link {
+        margin: 1px 8px;
+    }
+}
+
+/* Accessibility - Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 .container-fluid {
     padding: var(--ui2-spacing-md);
 }
@@ -494,15 +515,15 @@ footer.sticky-footer {
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0);
+    background: var(--ui2-scrollbar-track);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--ui2-scrollbar-thumb);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: var(--ui2-scrollbar-thumb-hover);
 }

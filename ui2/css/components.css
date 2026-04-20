@@ -71,46 +71,56 @@
 
 /* =========================================================================
  * CURRENT UI NAVBAR
- * Sub-navigation horizontal bar (tabs style)
+ * Sub-navigation horizontal bar with tabs and underline style
+ * Migrated from theme to UI2 base (FASE 2)
  * ========================================================================= */
 .currentUINavBar {
-    padding: 0;
+    background: var(--ui2-white);
+    border: none;
+    border-bottom: 1px solid var(--ui2-border-color);
+    border-radius: 0;
+    padding: 0 0.5rem;
     margin: 0 0 var(--ui2-spacing-lg) 0;
-    background-color: var(--ui2-white);
-    border: 1px solid var(--ui2-gray-200);
-    border-radius: var(--ui2-border-radius-lg);
-    display: flex;
-    align-items: center;
-    gap: var(--ui2-spacing-xs);
-    padding: var(--ui2-spacing-xs);
+}
+
+.currentUINavBar.bg-light {
+    background: var(--ui2-white);
+}
+
+.currentUINavBar .navbar-nav {
+    gap: 0;
 }
 
 .currentUINavBar .nav-item {
     margin: 0;
 }
 
-.currentUINavBar .nav-link,
-.currentUINavBar .nav-link:visited,
-.currentUINavBar .nav-link:link {
-    color: var(--ui2-gray-600);
+.currentUINavBar .nav-link {
     font-size: var(--ui2-font-size-sm);
-    font-weight: var(--ui2-font-weight-medium);
-    padding: var(--ui2-spacing-sm) var(--ui2-spacing-md);
-    border-radius: var(--ui2-border-radius);
-    transition: all var(--ui2-transition-fast);
+    font-weight: 500;
+    color: var(--ui2-gray-500);
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    padding: 0.625rem 0.875rem;
+    background: transparent;
+    margin-bottom: -1px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
     text-decoration: none;
+    transition: all var(--ui2-transition-fast);
 }
 
 .currentUINavBar .nav-link:hover {
-    color: var(--ui2-gray-900);
-    background-color: var(--ui2-gray-100);
+    color: var(--ui2-gray-700);
+    border-bottom-color: var(--ui2-gray-300);
 }
 
-.currentUINavBar .nav-link.active,
-.currentUINavBar .nav-link.active:visited {
-    color: var(--ui2-primary);
-    background-color: var(--ui2-primary-light);
-    font-weight: var(--ui2-font-weight-semibold);
+.currentUINavBar .nav-item.active > .nav-link,
+.currentUINavBar .nav-link.active {
+    color: var(--ui2-gray-900);
+    font-weight: 600;
+    border-bottom-color: var(--ui2-gray-800);
 }
 
 .currentUINavBar .dropdown-item {
@@ -119,6 +129,15 @@
 
 .currentUINavBar .dropdown-toggle::after {
     margin-left: var(--ui2-spacing-xs);
+    opacity: 0.45;
+}
+
+/* Integration with cards - seamless tabs */
+.currentUINavBar + .card,
+.currentUINavBar + div > .card:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none;
 }
 
 /* =========================================================================
@@ -336,10 +355,11 @@
  * ========================================================================= */
 .mw_ui_inner_space {
     background-color: var(--ui2-white);
+    border: 1px solid var(--ui2-border-color);
     border-radius: var(--ui2-border-radius-lg);
-    border: 1px solid var(--ui2-gray-200);
     padding: var(--ui2-spacing-xl);
     margin-bottom: var(--ui2-spacing-lg);
+    overflow: hidden;
 }
 
 .mw_ui_frm_container {
@@ -374,6 +394,27 @@
 
 .mw-dx-normal-ctr {
     height: 36px;
+}
+
+/* =========================================================================
+ * DEVEXTREME DATAGRID ENHANCEMENTS
+ * Migrated from theme (FASE 4)
+ * ========================================================================= */
+
+/* Ultra-thin scrollbars for cleaner look */
+.dx-scrollable-scrollbar.dx-scrollbar-vertical .dx-scrollable-scroll {
+    width: 4px;
+}
+
+.dx-scrollable-scrollbar.dx-scrollbar-horizontal .dx-scrollable-scroll {
+    height: 4px;
+}
+
+/* Card integration - seamless borders */
+.card > .mw_ui_inner_space,
+.card-body > .mw_ui_inner_space {
+    border: none;
+    border-radius: 0;
 }
 
 /* =========================================================================
@@ -434,11 +475,11 @@ a.badge:visited,
 a.badge:active {
   text-decoration: none;
   cursor: pointer;
-  color: #fff !important;
+  color: var(--ui2-white) !important;
   padding: 0.4em 0.8em;
   transition: opacity 0.2s;
 }
 a.badge:hover {
   opacity: 0.8;
-  color: #fff !important;
+  color: var(--ui2-white) !important;
 }
