@@ -951,9 +951,8 @@ footer .footer-brand a:hover .footer-logo {
 }
 
 .mw-subinterface-header-route::after {
-    content: " › ";
+    content: " \203A ";
     color: var(--ui2-gray-300);
-    white-space: pre;
 }
 
 .mw-subinterface-header-route a {
