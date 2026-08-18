@@ -453,9 +453,25 @@ main {
     }
 }
 
-/* Accessibility - Respect reduced motion preference */
+/* Accessibility - Respect reduced motion preference
+ *
+ * FIX (overlay misalignment): the original reset used the universal selector
+ *   *, *::before, *::after { transition-duration: 0.01ms !important; ... }
+ * which also cancelled the transitions/animations of DevExtreme's overlay
+ * containers (.dx-overlay-wrapper / .dx-overlay-content). Collapsing the
+ * duration to ~0 on those elements made DevExtreme mis-measure the position
+ * of the flipped popup/calendar, leaving it misaligned. The bug only showed
+ * up on machines with "reduce motion / disable animations" enabled in the OS
+ * (which is exactly what triggers this @media query).
+ *
+ * Solution: exclude any DevExtreme element (class starting with "dx-") from
+ * the reset so it does not interfere with their positioning, while keeping
+ * the accessibility intent for the rest of the UI.
+ */
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *:not([class*="dx-"]),
+    *:not([class*="dx-"])::before,
+    *:not([class*="dx-"])::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
