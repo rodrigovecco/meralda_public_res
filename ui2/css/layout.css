@@ -22,9 +22,15 @@ body {
 /* =========================================================================
  * FIXED POSITION ELEMENTS
  * SBAdmin extends Bootstrap's fixed-top to include its layout elements
+ *
+ * NOTE: The sidenav (#layoutSidenav_nav) is intentionally NOT part of this
+ * group. Pinning it here with `left: 0; right: 0` (specificity 0,2,1,0)
+ * overrode the hidden/toggle rules that move it via `left`, so on mobile the
+ * sidebar stayed fixed and only the backdrop toggled. The sidenav gets its
+ * own `position: fixed` below and its `left` is driven solely by the toggle
+ * rules.
  * ========================================================================= */
 .fixed-top,
-.sb-nav-fixed #layoutSidenav #layoutSidenav_nav,
 .sb-nav-fixed .sb-topnav {
     position: fixed;
     top: 0;
@@ -140,6 +146,8 @@ body {
 }
 
 .sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
+    position: fixed;
+    top: 0;
     width: var(--ui2-sidebar-width);
     height: 100vh;
     z-index: var(--ui2-z-sidenav);
