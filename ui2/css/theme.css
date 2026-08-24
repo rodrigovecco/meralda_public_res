@@ -159,10 +159,14 @@ body {
 /* Autofill styles - prevent white background override */
 #layoutAuthentication .form-control:-webkit-autofill,
 #layoutAuthentication .form-control:-webkit-autofill:hover,
-#layoutAuthentication .form-control:-webkit-autofill:focus {
+#layoutAuthentication .form-control:-webkit-autofill:focus,
+#layoutAuthentication .form-control:-webkit-autofill:active {
     -webkit-text-fill-color: var(--ui2-auth-text);
-    -webkit-box-shadow: 0 0 0 1000px var(--ui2-auth-input-focus-bg) inset;
-    box-shadow: 0 0 0 3px var(--ui2-auth-input-focus-shadow);
+    caret-color: var(--ui2-auth-text);
+    /* Opaque inset fill masks the autofill background; keep both shadows in a
+     * single declaration so the focus ring does not override the mask. */
+    -webkit-box-shadow: 0 0 0 1000px var(--ui2-auth-input-autofill-bg) inset, 0 0 0 3px var(--ui2-auth-input-focus-shadow);
+    box-shadow: 0 0 0 1000px var(--ui2-auth-input-autofill-bg) inset, 0 0 0 3px var(--ui2-auth-input-focus-shadow);
     border-color: var(--ui2-auth-input-focus-border);
     transition: background-color 5000s ease-in-out 0s;
     font-family: var(--ui2-font-family);

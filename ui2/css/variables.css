@@ -268,6 +268,10 @@
     --ui2-auth-input-focus-bg: rgba(255, 255, 255, 0.15);
     --ui2-auth-input-focus-border: rgba(255, 255, 255, 0.4);
     --ui2-auth-input-focus-shadow: rgba(255, 255, 255, 0.1);
+    /* Opaque fill used to mask the browser autofill white background.
+     * Must be opaque: the inset box-shadow trick fails with transparent colors.
+     * Approximates the semi-transparent input over the dark auth gradient. */
+    --ui2-auth-input-autofill-bg: #2f3a4a;
     
     /* Labels and placeholders */
     --ui2-auth-placeholder: rgba(255, 255, 255, 0.5);
