@@ -135,6 +135,10 @@
             readable: !!it.readable,
             deletable: !!it.deletable,
             renamable: !!it.renamable,
+            // Carpeta protegida: se ve y se recorre, pero no se toca. Vive en
+            // `byPath` igual que las demás banderas, porque DevExtreme descarta
+            // los campos que no conoce al normalizar los items.
+            protected: !!it.protected,
             url: it.url || ''
         };
     }
@@ -689,12 +693,48 @@
         return this.byPath[it.path] || it;
     };
 
+    /**
+     * Is this path part of the application rather than of the site?
+     *
+     * The server answers the same question (`get_protected_paths()`), and the
+     * flag travels with every item as `protected`. It is asked here as well
+     * because a folder can be ENTERED — that is the point, it is listed and
+     * browsable — and once inside it the bar's own buttons (New folder, Upload)
+     * would otherwise look available and be refused afterwards. The ancestor
+     * walk matters for the same reason: everything under the folder is protected
+     * too, and the server says so per item, but the bar asks about the DIRECTORY.
+     *
+     * @param  {string} path
+     * @return {boolean}
+     */
+    MwStaticFilesFm.prototype.isProtectedPath = function (path) {
+        var p = (path || '').replace(/^\/+|\/+$/g, '');
+        while (p) {
+            var it = this.byPath[p];
+            if (it && it.protected) { return true; }
+            var cut = p.lastIndexOf('/');
+            p = cut === -1 ? '' : p.substring(0, cut);
+        }
+        return false;
+    };
+
     /** Show which file the Edit button will open. */
     MwStaticFilesFm.prototype.updateEditButton = function () {
         if (!this.editBtn || !this.selLabel) { return; }
         var it = this.selectedItem;
         var row = this.rowData(it);
-        if (it && !it.isDirectory) {
+        if (it && it.isDirectory) {
+            // A folder can be selected but not edited; when it is application
+            // code the label says so, because otherwise the greyed-out Edit
+            // button reads as a defect.
+            this.editBtn.disabled = true;
+            this.editBtn.style.opacity = '.5';
+            this.selLabel.textContent = this.isProtectedPath(it.path)
+                ? it.path + '  (' + (this.cfg.msgs.app_folder || 'application folder, read-only') + ')'
+                : '';
+            return;
+        }
+        if (it) {
             // Enabled for READING, not for writing: a frozen area still has to be
             // consultable, and the editor itself says "read-only". Only a file
             // that cannot be shown as text (a JPEG) is out.
@@ -706,11 +746,11 @@
                 tag = '  (' + (this.cfg.msgs.readonly || 'Read-only') + ')';
             }
             this.selLabel.textContent = it.path + tag;
-        } else {
-            this.editBtn.disabled = true;
-            this.editBtn.style.opacity = '.5';
-            this.selLabel.textContent = '';
+            return;
         }
+        this.editBtn.disabled = true;
+        this.editBtn.style.opacity = '.5';
+        this.selLabel.textContent = '';
     };
 
     /** Open the selected file in the text editor. */
@@ -762,7 +802,17 @@
     MwStaticFilesFm.prototype.updateDirLabel = function () {
         if (!this.dirLabel) { return; }
         var dir = this.currentDir();
-        this.dirLabel.textContent = (this.cfg.msgs.into || 'into') + ' /' + (dir ? dir + '/' : '');
+        var into = this.cfg.msgs.into || 'into';
+        if (this.isProtectedPath(dir)) {
+            // New folder and Upload are refused here by the server, so the bar
+            // says it before the attempt instead of after the refusal.
+            this.dirLabel.textContent = into + ' /' + dir + '/  '
+                + '(' + (this.cfg.msgs.app_folder || 'application folder, read-only') + ')';
+            this.dirLabel.title = this.cfg.msgs.app_folder_hint
+                || 'This folder belongs to the application: it can be browsed but not changed.';
+            return;
+        }
+        this.dirLabel.textContent = into + ' /' + (dir ? dir + '/' : '');
         this.dirLabel.title = dir
             ? (this.cfg.msgs.into_hint || 'Files are saved into this folder')
             : (this.cfg.msgs.into_root || 'The area root only accepts the files pinned as editable');
