@@ -274,9 +274,13 @@
     --ui2-auth-input-autofill-bg: #2f3a4a;
     
     /* Labels and placeholders */
-    --ui2-auth-placeholder: rgba(255, 255, 255, 0.5);
-    --ui2-auth-label: rgba(255, 255, 255, 0.65);
-    --ui2-auth-label-active: rgba(255, 255, 255, 0.85);
+    /* 0.5 was under the 4.5:1 minimum for normal text once the input's own
+     * translucent fill is composited in: a placeholder is text, and a user
+     * who cannot read "Password" is not helped by the label being decorative.
+     * 0.6 clears it with margin and still reads as secondary. */
+    --ui2-auth-placeholder: rgba(255, 255, 255, 0.6);
+    --ui2-auth-label: rgba(255, 255, 255, 0.7);
+    --ui2-auth-label-active: rgba(255, 255, 255, 0.9);
     
     /* Captcha and input groups */
     --ui2-auth-captcha-bg: rgba(0, 0, 0, 0.8);

@@ -81,6 +81,69 @@ body {
     font-family: var(--ui2-font-family);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* THE DARK PALETTE NEEDS A TEXT COLOUR OF ITS OWN.
+     *
+     * This page paints a dark gradient and styles every control for it —
+     * inputs, labels, links, buttons — but until now it never said what colour
+     * TEXT is, so plain text kept the light theme's: `.card-header` is
+     * gray-700, headings are Bootstrap's #212529, and body copy inherits the
+     * body's slate-800. Dark on dark: a login page whose inputs were readable
+     * and whose title was not.
+     *
+     * Set once, on the layout root, so anything added later — the password
+     * reset and register pages, a project's own content file — is readable
+     * without having to know this. */
+    color: var(--ui2-auth-text);
+}
+
+/* Everything the light theme painted dark, restated for this surface.
+ *
+ * `.card-header` and `.card-title` come from the CARDS block above with
+ * gray-700 and gray-900; the rules below are the same properties for the same
+ * elements, scoped to the auth layout, where the background is not white. */
+#layoutAuthentication .card,
+#layoutAuthentication .card-header,
+#layoutAuthentication .card-body,
+#layoutAuthentication .card-footer,
+#layoutAuthentication .card-title {
+    color: var(--ui2-auth-text);
+}
+
+/* Headings and plain text inside an auth card.
+ *
+ * Bootstrap's reboot gives every heading #212529 and no rule here touched
+ * them, so an `<h2>` placed in a card header — which is exactly what the
+ * default markup does, and what a project's own header fragment tends to do —
+ * was invisible.
+ *
+ * `color` only, and NO `!important`: an inline style is a deliberate choice by
+ * whoever wrote it, and a theme that out-shouts inline styles cannot be
+ * overridden at all. The framework's own markup does not need one. */
+#layoutAuthentication h1,
+#layoutAuthentication h2,
+#layoutAuthentication h3,
+#layoutAuthentication h4,
+#layoutAuthentication h5,
+#layoutAuthentication h6 {
+    color: var(--ui2-auth-text);
+    font-family: var(--ui2-font-family);
+}
+
+/* Secondary copy: readable, not merely dimmer. */
+#layoutAuthentication small,
+#layoutAuthentication .small,
+#layoutAuthentication .login-other-info {
+    color: var(--ui2-auth-text-muted);
+}
+
+/* A table on an auth page (captcha help, a list of accounts being chosen...). */
+#layoutAuthentication .table {
+    color: var(--ui2-auth-text);
+}
+
+/* Checkbox and radio labels: "remember me" is text like any other. */
+#layoutAuthentication .form-check-label {
+    color: var(--ui2-auth-label-active);
 }
 
 #layoutAuthentication #layoutAuthentication_content {
