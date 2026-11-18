@@ -697,12 +697,12 @@
      * Is this path part of the application rather than of the site?
      *
      * The server answers the same question (`get_protected_paths()`), and the
-     * flag travels with every item as `protected`. It is asked here as well
-     * because a folder can be ENTERED — that is the point, it is listed and
-     * browsable — and once inside it the bar's own buttons (New folder, Upload)
-     * would otherwise look available and be refused afterwards. The ancestor
-     * walk matters for the same reason: everything under the folder is protected
-     * too, and the server says so per item, but the bar asks about the DIRECTORY.
+     * flag travels with every item as `protected`. Such a folder is not listed
+     * and cannot be opened from the tree; the check is here because a path can
+     * still be reached directly, and then the bar should say why New folder and
+     * Upload would be refused instead of letting the attempt fail. The ancestor
+     * walk matters for the same reason: everything under a protected folder is
+     * protected too.
      *
      * @param  {string} path
      * @return {boolean}
